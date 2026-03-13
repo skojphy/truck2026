@@ -23,196 +23,48 @@ import { motion, AnimatePresence } from "framer-motion";
 // --- Components ---
 
 const Navbar = ({ onHomeClick }) => (
-    <header
-        style={{
-            width: "100%",
-            background: "#fff",
-            borderBottom: "1px solid #eee",
-            position: "sticky",
-            top: 0,
-            zIndex: 1000,
-        }}
-    >
-        <nav
-            style={{
-                maxWidth: "1400px",
-                margin: "0 auto",
-                padding: "1rem 2rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-            }}
-        >
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "3rem",
-                    }}
-                >
-                    <h1
-                        onClick={onHomeClick}
-                        style={{
-                            fontSize: "1.8rem",
-                            cursor: "pointer",
-                            fontWeight: 800,
-                            letterSpacing: "-1.5px",
-                            color: "var(--gmarket-blue)",
-                            display: "flex",
-                            alignItems: "center",
-                        }}
-                    >
-                        G
-                        <span style={{ color: "var(--gmarket-green)" }}>
-                            MARKET
-                        </span>
-                        <span
-                            style={{
-                                fontSize: "0.8rem",
-                                color: "#888",
-                                fontWeight: 500,
-                                marginLeft: "0.6rem",
-                                letterSpacing: "0",
-                                background: "#f0f0f0",
-                                padding: "2px 8px",
-                                borderRadius: "4px",
-                            }}
-                        >
-                            LIFE MODE
-                        </span>
-                    </h1>
-                    <div style={{ position: "relative" }}>
-                        <input
-                            type="text"
-                            placeholder="어떤 일상의 순간을 시작하고 싶으신가요?"
-                            style={{
-                                padding: "0.8rem 1.5rem 0.8rem 3.5rem",
-                                borderRadius: "30px",
-                                border: "2px solid var(--gmarket-green)",
-                                width: "520px",
-                                fontSize: "1rem",
-                                outline: "none",
-                                background: "#fff",
-                            }}
-                        />
-                        <Search
-                            size={20}
-                            style={{
-                                position: "absolute",
-                                left: "1.2rem",
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                                color: "var(--gmarket-green)",
-                            }}
-                        />
-                    </div>
+    <header className="navbar-header">
+        <nav className="nav-container">
+            <div className="nav-top">
+                <div className="logo" onClick={onHomeClick}>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Gmarket_Logo.svg/2560px-Gmarket_Logo.svg.png"
+                        height="28"
+                    />
                 </div>
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1.8rem",
-                        color: "#333",
-                    }}
-                >
-                    <div style={{ textAlign: "center", cursor: "pointer" }}>
+                <div className="search-bar">
+                    <input type="text" placeholder="오늘은 어떤 일상을 찾으시나요?" />
+                    <Search size={22} className="search-icon" />
+                </div>
+                <div className="nav-utils">
+                    <div className="nav-util-item">
                         <User size={24} />
-                        <div style={{ fontSize: "0.7rem", marginTop: "2px" }}>
-                            마이페이지
-                        </div>
+                        <span>MY</span>
                     </div>
-                    <div
-                        style={{
-                            textAlign: "center",
-                            cursor: "pointer",
-                            position: "relative",
-                        }}
-                    >
+                    <div className="nav-util-item badge-container">
                         <ShoppingCart size={24} />
-                        <div style={{ fontSize: "0.7rem", marginTop: "2px" }}>
-                            장바구니
-                        </div>
-                        <span
-                            style={{
-                                position: "absolute",
-                                top: -5,
-                                right: -5,
-                                background: "var(--gmarket-green)",
-                                color: "#fff",
-                                fontSize: "0.6rem",
-                                padding: "1px 5px",
-                                borderRadius: "10px",
-                            }}
-                        >
-                            3
-                        </span>
+                        <div className="cart-count">3</div>
                     </div>
-                    <div style={{ textAlign: "center", cursor: "pointer" }}>
+                    <div className="nav-util-item hide-mobile">
                         <Bell size={24} />
-                        <div style={{ fontSize: "0.7rem", marginTop: "2px" }}>
-                            알림
-                        </div>
+                        <span>알림</span>
                     </div>
                 </div>
             </div>
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "2.5rem",
-                    fontWeight: 700,
-                    fontSize: "1rem",
-                    color: "#333",
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.5rem",
-                        color: "var(--gmarket-blue)",
-                        cursor: "pointer",
-                    }}
-                >
+            <div className="nav-bottom">
+                <div className="category-menu">
                     <Menu size={20} /> 전개 카테고리
                 </div>
-                <a
-                    href="#"
-                    style={{
-                        color: "var(--gmarket-green)",
-                        borderBottom: "3px solid var(--gmarket-green)",
-                        paddingBottom: "2px",
-                    }}
-                >
-                    라이프 모드
-                </a>
-                <a href="#">베스트</a>
-                <a href="#">스마일배송</a>
-                <a href="#">당일배송</a>
-                <a href="#">브랜드ON</a>
-                <a href="#">슈퍼딜</a>
-                <a
-                    href="#"
-                    style={{
-                        marginLeft: "auto",
-                        fontWeight: 500,
-                        color: "#888",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.3rem",
-                    }}
-                >
-                    <img
-                        src="https://image.gmarket.co.kr/ui/header/smile_cash_icon.png"
-                        width="16"
-                    />{" "}
+                <div className="nav-links">
+                    <a href="#" className="active">라이프 모드</a>
+                    <a href="#">베스트</a>
+                    <a href="#" className="hide-mobile">스마일배송</a>
+                    <a href="#" className="hide-mobile">당일배송</a>
+                    <a href="#" className="hide-mobile">브랜드ON</a>
+                    <a href="#">슈퍼딜</a>
+                </div>
+                <a href="#" className="smile-cash ml-auto hide-mobile">
+                    <img src="https://image.gmarket.co.kr/ui/header/smile_cash_icon.png" width="16" />
                     Smile Cash <strong>12,050P</strong>
                 </a>
             </div>
@@ -626,11 +478,6 @@ const ModeCategory = ({ icon: Icon, label, active, onClick }) => (
     >
         <div
             style={{
-                padding: "1.2rem",
-                borderRadius: "50%",
-                background: active ? "rgba(255,255,255,0.2)" : "#f8f9fa",
-            }}
-        >
             <Icon size={36} />
         </div>
         <span style={{ fontWeight: 800, fontSize: "1.05rem" }}>{label}</span>
@@ -638,68 +485,19 @@ const ModeCategory = ({ icon: Icon, label, active, onClick }) => (
 );
 
 const HomePage = ({ onModeClick, currentLifeMode, avatarConfig, onUpdateAvatarConfig, modeHistory }) => (
-    <main
-        style={{ maxWidth: "1400px", margin: "1rem auto", padding: "0 2rem" }}
-    >
+    <main className="main-container">
         {/* Top Mini Banner */}
-        <div
-            className="hero-banner"
-            style={{
-                background: "linear-gradient(90deg, #1A1A2E 0%, #2E3192 100%)",
-            }}
-        >
-            <div style={{ color: "#fff", display: "flex", alignItems: "center", gap: "1.5rem" }}>
-                <div
-                    className="badge badge-green"
-                    style={{
-                        padding: "4px 10px",
-                    }}
-                >
-                    TODAY'S PICK
-                </div>
-                <h2
-                    style={{
-                        color: "#fff",
-                        fontSize: "1.4rem",
-                        fontWeight: 800,
-                    }}
-                >
-                    주말, 숲으로 떠날 시간
-                </h2>
-                <p
-                    style={{
-                        fontSize: "0.95rem",
-                        opacity: 0.8,
-                        fontWeight: 500,
-                    }}
-                >
-                    초보 캠퍼를 위한 AI 체크리스트부터 검증된 프리미엄 장비까지
-                </p>
+        <div className="hero-banner">
+            <div className="banner-content">
+                <div className="badge badge-green">TODAY'S PICK</div>
+                <h2>주말, 숲으로 떠날 시간</h2>
+                <p>초보 캠퍼를 위한 AI 체크리스트부터 검증된 프리미엄 장비까지</p>
             </div>
-            <button
-                style={{
-                    marginLeft: "auto",
-                    padding: "0.6rem 1.5rem",
-                    borderRadius: "20px",
-                    background: "var(--gmarket-green)",
-                    color: "#fff",
-                    fontWeight: 700,
-                    fontSize: "0.9rem",
-                }}
-            >
-                보러가기
-            </button>
+            <button className="banner-btn">보러가기</button>
         </div>
 
         {/* Emphasized Section: Avatar & Chatbot */}
-        <div
-            style={{
-                display: "grid",
-                gridTemplateColumns: "350px 1fr",
-                gap: "2rem",
-                marginBottom: "3rem",
-            }}
-        >
+        <div className="home-grid">
             <AvatarCharacter mode={currentLifeMode} config={avatarConfig} onUpdateConfig={onUpdateAvatarConfig} />
             <ChatbotLifeMode onModeSelect={onModeClick} />
         </div>
@@ -708,18 +506,12 @@ const HomePage = ({ onModeClick, currentLifeMode, avatarConfig, onUpdateAvatarCo
         <RecentLifeModes history={modeHistory} onModeSelect={onModeClick} />
 
         {/* Mode Discovery Grid */}
-        <section style={{ marginBottom: "6rem" }}>
+        <section className="mode-discovery-section">
             <SectionHeader
                 title="오늘의 라이프 모드 발견"
                 subtitle="지금 당신에게 필요한 순간을 선택해보세요"
             />
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(6, 1fr)",
-                    gap: "1.5rem",
-                }}
-            >
+            <div className="mode-discovery-grid">
                 <ModeCategory
                     icon={Tent}
                     label="캠핑/아웃도어"
@@ -1558,101 +1350,32 @@ export default function App() {
                 )}
             </AnimatePresence>
             <AIAssistant />
-            <footer
-                style={{
-                    borderTop: "1px solid #eee",
-                    marginTop: "8rem",
-                    padding: "5rem 2rem",
-                    background: "#fafafa",
-                }}
-            >
-                <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            marginBottom: "4rem",
-                        }}
-                    >
-                        <div>
-                            <h2
-                                style={{
-                                    color: "var(--gmarket-blue)",
-                                    marginBottom: "1.8rem",
-                                    fontSize: "1.8rem",
-                                }}
-                            >
-                                G
-                                <span style={{ color: "var(--gmarket-green)" }}>
-                                    MARKET
-                                </span>
+            <footer className="footer-container">
+                <div className="footer-inner">
+                    <div className="footer-main">
+                        <div className="footer-logo-section">
+                            <h2 className="footer-logo">
+                                G<span>MARKET</span>
                             </h2>
-                            <div
-                                style={{
-                                    display: "flex",
-                                    gap: "2rem",
-                                    color: "#666",
-                                    fontSize: "0.9rem",
-                                    fontWeight: 600,
-                                }}
-                            >
+                            <div className="footer-links">
                                 <span>회사소개</span>
                                 <span>이용약관</span>
-                                <span style={{ color: "#000" }}>
-                                    개인정보처리방침
-                                </span>
+                                <span className="bold">개인정보처리방침</span>
                                 <span>지적재산권보호센터</span>
                             </div>
                         </div>
-                        <div style={{ display: "flex", gap: "5rem" }}>
-                            <div>
-                                <h4
-                                    style={{
-                                        marginBottom: "1.2rem",
-                                        fontSize: "1rem",
-                                    }}
-                                >
-                                    고객센터
-                                </h4>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "0.6rem",
-                                        color: "#888",
-                                        fontSize: "0.85rem",
-                                    }}
-                                >
+                        <div className="footer-info-grid">
+                            <div className="footer-info-group">
+                                <h4>고객센터</h4>
+                                <div className="footer-info-details">
                                     <span>365일 24시간 운영</span>
-                                    <strong
-                                        style={{
-                                            fontSize: "1.2rem",
-                                            color: "#333",
-                                        }}
-                                    >
-                                        1566-0001
-                                    </strong>
+                                    <strong className="phone-number">1566-0001</strong>
                                     <span>(유료발생)</span>
                                 </div>
                             </div>
-                            <div>
-                                <h4
-                                    style={{
-                                        marginBottom: "1.2rem",
-                                        fontSize: "1rem",
-                                    }}
-                                >
-                                    Family Site
-                                </h4>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "0.6rem",
-                                        color: "#888",
-                                        fontSize: "0.85rem",
-                                    }}
-                                >
+                            <div className="footer-info-group">
+                                <h4>Family Site</h4>
+                                <div className="footer-info-details">
                                     <span>옥션</span>
                                     <span>G9</span>
                                     <span>스마일페이</span>
@@ -1660,21 +1383,9 @@ export default function App() {
                             </div>
                         </div>
                     </div>
-                    <div
-                        style={{
-                            borderTop: "1px solid #eee",
-                            paddingTop: "2.5rem",
-                            color: "#aaa",
-                            fontSize: "0.75rem",
-                            lineHeight: 1.8,
-                        }}
-                    >
-                        (주)지마켓 서울특별시 강남구 테헤란로 152 (역삼동,
-                        강남파이낸스센터) 대표이사 : 전항일 사업자등록번호 :
-                        220-81-83676 <br />
-                        지마켓은 통신판매중개자이며 통신판매의 당사자가
-                        아닙니다. 따라서 지마켓은 상품·거래정보 및 거래에 대하여
-                        책임을 지지 않습니다.
+                    <div className="footer-bottom">
+                        (주)지마켓 서울특별시 강남구 테헤란로 152 (역삼동, 강남파이낸스센터) 대표이사 : 전항일 사업자등록번호 : 220-81-83676 <br />
+                        지마켓은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 지마켓은 상품·거래정보 및 거래에 대하여 책임을 지지 않습니다.
                     </div>
                 </div>
             </footer>
