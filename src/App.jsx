@@ -478,9 +478,20 @@ const ModeCategory = ({ icon: Icon, label, active, onClick }) => (
     >
         <div
             style={{
-            <Icon size={36} />
+                width: "56px",
+                height: "56px",
+                borderRadius: "18px",
+                background: active
+                    ? "rgba(255,255,255,0.2)"
+                    : "rgba(0,179,30,0.05)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+        >
+            <Icon size={28} />
         </div>
-        <span style={{ fontWeight: 800, fontSize: "1.05rem" }}>{label}</span>
+        <span style={{ fontWeight: 700, fontSize: "0.9rem" }}>{label}</span>
     </div>
 );
 
