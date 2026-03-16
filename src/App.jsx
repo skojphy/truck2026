@@ -461,7 +461,8 @@ const SectionHeader = ({ title, subtitle }) => (
     </div>
 );
 
-const ModeCategory = ({ label, active, onClick }) => (
+// eslint-disable-next-line no-unused-vars
+const ModeCategory = ({ icon: Icon, label, active, onClick }) => (
     <div
         onClick={onClick}
         style={{
