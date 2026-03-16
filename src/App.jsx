@@ -1410,42 +1410,33 @@ export default function App() {
                 )}
             </AnimatePresence>
             <AIAssistant />
-            <footer className="footer-container">
-                <div className="footer-inner">
-                    <div className="footer-main">
-                        <div className="footer-logo-section">
-                            <h2 className="footer-logo">
-                                G<span>MARKET</span>
-                            </h2>
-                            <div className="footer-links">
-                                <span>회사소개</span>
-                                <span>이용약관</span>
-                                <span className="bold">개인정보처리방침</span>
-                                <span>지적재산권보호센터</span>
-                            </div>
-                        </div>
-                        <div className="footer-info-grid">
-                            <div className="footer-info-group">
-                                <h4>고객센터</h4>
-                                <div className="footer-info-details">
-                                    <span>365일 24시간 운영</span>
-                                    <strong className="phone-number">1566-0001</strong>
-                                    <span>(유료발생)</span>
-                                </div>
-                            </div>
-                            <div className="footer-info-group">
-                                <h4>Family Site</h4>
-                                <div className="footer-info-details">
-                                    <span>옥션</span>
-                                    <span>G9</span>
-                                    <span>스마일페이</span>
-                                </div>
-                            </div>
-                        </div>
+            <footer className="footer">
+                <div className="container">
+                    <div className="box__copyright">
+                        <p className="text__copyright">ⓒ Gmarket Inc. All rights reserved.</p>
+                        <a href="mailto:DL-DEV_Blog@gmarket.com" className="link__contact-us">Contact us</a>
                     </div>
-                    <div className="footer-bottom">
-                        (주)지마켓 서울특별시 강남구 테헤란로 152 (역삼동, 강남파이낸스센터) 대표이사 : 전항일 사업자등록번호 : 220-81-83676 <br />
-                        지마켓은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 지마켓은 상품·거래정보 및 거래에 대하여 책임을 지지 않습니다.
+                    <div className="box__family-site">
+                        <div className="box__select-link">
+                            <button className="button__family-site sprite__pxc--after">Family site</button>
+                           <ul className="list__family-site">
+                                <li className="list-item__family-site"><a href="https://news.gmarket.com/" target="_blank" rel="noreferrer" title="새 창" className="link__family-site">Gmarket 뉴스룸</a></li>
+                                <li className="list-item__family-site"><a href="https://careers.gmarket.com" target="_blank" rel="noreferrer" title="새 창" className="link__family-site">채용사이트</a></li>
+                                <li className="list-item__family-site"><a href="https://product.gmarket.com/" target="_blank" rel="noreferrer" title="새 창" className="link__family-site">G마켓 PX본부</a></li>
+                                <li className="list-item__family-site"><a href="http://gds.gmarket.co.kr" target="_blank" rel="noreferrer" title="새 창" className="link__family-site">G마켓 디자인</a></li>
+                                <li className="list-item__family-site"><a href="https://www.instagram.com/gmarket_official/" target="_blank" rel="noreferrer" title="새 창" className="link__family-site">G마켓 인스타그램</a></li>
+                                <li className="list-item__family-site"><a href="https://kr.linkedin.com/company/gmarket-global-llc" target="_blank" rel="noreferrer" title="새 창" className="link__family-site">G마켓 링크드인</a></li>
+                                <li className="list-item__family-site"><a href="https://www.youtube.com/@Gmarket.official/" target="_blank" rel="noreferrer" title="새 창" className="link__family-site">G마켓 유튜브</a></li>
+                            </ul>
+                        </div>
+                        <div className="box__direct-link">
+                            <a href="//www.gmarket.co.kr" className="link__family-site" target="_blank" rel="noreferrer" title="새 창">
+                                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fdw5zcr%2FbtsJ8paazz3%2FAAAAAAAAAAAAAAAAAAAAACk9dvocv47Y_VI1S1UAiYQgyCADl0d-cUFEi_bELiLy%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1774969199%26allow_ip%3D%26allow_referer%3D%26signature%3DKstThxrZPovqReevMch%252F0BY2JGs%253D" alt="G마켓 로고" className="logo-image" />
+                            </a>
+                            <a href="http://www.auction.co.kr" className="link__family-site" target="_blank" rel="noreferrer" title="새 창">
+                                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fd5vquE%2FbtsJ7OIhxmQ%2FAAAAAAAAAAAAAAAAAAAAAK2oVuOxVWJm0BPKFt-z4joE-TKzsGjDHA9lwdF_WTuP%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1774969199%26allow_ip%3D%26allow_referer%3D%26signature%3DSc4TDIO27aVS2DFK4Kj71wkR9ZY%253D" alt="옥션 로고" className="logo-image" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </footer>
