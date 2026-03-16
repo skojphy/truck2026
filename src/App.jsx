@@ -462,40 +462,27 @@ const SectionHeader = ({ title, subtitle }) => (
 );
 
 // eslint-disable-next-line no-unused-vars
-const ModeCategory = ({ icon: Icon, label, active, onClick }) => (
+const ModeCategory = ({ icon: Icon, image, label, active, onClick }) => (
     <div
         onClick={onClick}
+        className="mode-category-card"
         style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "1rem",
-            cursor: "pointer",
-            padding: "1.8rem",
-            borderRadius: "24px",
-            background: active ? "var(--gmarket-green)" : "#fff",
-            color: active ? "#fff" : "#333",
-            boxShadow: "0 4px 15px rgba(0,0,0,0.04)",
-            transition: "all 0.3s",
-            border: active ? "none" : "1px solid #f0f0f0",
+            backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%), url(${image})`,
+            border: active ? "3px solid var(--gmarket-green)" : "3px solid transparent",
         }}
     >
-        <div
-            style={{
-                width: "56px",
-                height: "56px",
-                borderRadius: "18px",
-                background: active
-                    ? "rgba(255,255,255,0.2)"
-                    : "rgba(0,179,30,0.05)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-        >
-            <Icon size={28} />
+        <div className="mode-category-content">
+            <div
+                className="mode-icon-wrapper"
+                style={{
+                    background: active ? "var(--gmarket-green)" : "rgba(255,255,255,0.2)",
+                    borderColor: active ? "var(--gmarket-green)" : "rgba(255,255,255,0.3)"
+                }}
+            >
+                <Icon size={24} color="#fff" />
+            </div>
+            <span className="mode-label">{label}</span>
         </div>
-        <span style={{ fontWeight: 700, fontSize: "0.9rem" }}>{label}</span>
     </div>
 );
 
@@ -526,18 +513,39 @@ const HomePage = ({ onModeClick, currentLifeMode, avatarConfig, onUpdateAvatarCo
                 title="오늘의 라이프 모드 발견"
                 subtitle="지금 당신에게 필요한 순간을 선택해보세요"
             />
-            <div className="mode-discovery-grid">
+            <div className="mode-discovery-slider">
                 <ModeCategory
                     icon={Tent}
+                    image="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600"
                     label="캠핑/아웃도어"
                     active
                     onClick={() => onModeClick("camping")}
                 />
-                <ModeCategory icon={Coffee} label="홈카페/티타임" />
-                <ModeCategory icon={Activity} label="웰니스/러닝" />
-                <ModeCategory icon={Laptop} label="홈오피스/워크" />
-                <ModeCategory icon={User} label="반려인 생활" />
-                <ModeCategory icon={Star} label="취미/컬렉션" />
+                <ModeCategory 
+                    icon={Coffee} 
+                    image="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600"
+                    label="홈카페/티타임" 
+                />
+                <ModeCategory 
+                    icon={Activity} 
+                    image="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600"
+                    label="웰니스/러닝" 
+                />
+                <ModeCategory 
+                    icon={Laptop} 
+                    image="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600"
+                    label="홈오피스/워크" 
+                />
+                <ModeCategory 
+                    icon={User} 
+                    image="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600"
+                    label="반려인 생활" 
+                />
+                <ModeCategory 
+                    icon={Star} 
+                    image="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600"
+                    label="취미/컬렉션" 
+                />
             </div>
         </section>
 
