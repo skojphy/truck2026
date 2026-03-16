@@ -28,8 +28,9 @@ const Navbar = ({ onHomeClick }) => (
             <div className="nav-top">
                 <div className="logo" onClick={onHomeClick}>
                     <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Gmarket_Logo.svg/2560px-Gmarket_Logo.svg.png"
+                        src="https://pics.gmarket.co.kr/pc/single/kr/common/image__logo.png"
                         height="28"
+                        alt="Gmarket Logo"
                     />
                 </div>
                 <div className="search-bar">
