@@ -9,7 +9,6 @@ import {
     Activity,
     Laptop,
     CheckCircle2,
-    MapPin,
     Star,
     ShoppingCart,
     ArrowLeft,
@@ -17,7 +16,10 @@ import {
     Bell,
     Heart,
     Menu,
+    PlayCircle,
+    ThumbsUp,
 } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 // --- Components ---
@@ -29,7 +31,7 @@ const Navbar = ({ onHomeClick }) => (
                 <div className="logo" onClick={onHomeClick}>
                     <img
                         src="https://pics.gmarket.co.kr/pc/single/kr/common/image__logo.png"
-                        height="28"
+                        height="40"
                         alt="Gmarket Logo"
                     />
                 </div>
@@ -459,7 +461,7 @@ const SectionHeader = ({ title, subtitle }) => (
     </div>
 );
 
-const ModeCategory = ({ icon: Icon, label, active, onClick }) => (
+const ModeCategory = ({ label, active, onClick }) => (
     <div
         onClick={onClick}
         style={{
@@ -815,39 +817,118 @@ const CampingModePage = ({ onBackClick }) => (
                             fontWeight: 500,
                         }}
                     >
-                        처음 떠나는 캠핑, 두려워하지 마세요. 지마켓 에디터가
-                        직접 구성한 패키지로 완벽한 하룻밤을 준비하세요.
+                        텐트 설치부터 불멍까지, 지마켓이 제안하는 완벽한 캠핑의 정석.
+                        지금 이 순간 가장 사랑받는 아이템들과 생생한 리뷰를 확인하세요.
                     </p>
                 </div>
 
+                {/* Bundle Deal Section */}
                 <section style={{ marginBottom: "5rem" }}>
-                    <h3
-                        style={{
-                            fontSize: "1.6rem",
-                            marginBottom: "1.8rem",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.8rem",
-                        }}
-                    >
-                        <Info size={28} color="var(--gmarket-green)" /> 캠핑
-                        가이드: 숲의 정적을 즐기는 법
-                    </h3>
-                    <div
-                        className="premium-card"
-                        style={{
-                            background: "#f8f9fa",
-                            border: "none",
-                            padding: "2.5rem",
-                        }}
-                    >
-                        <div
-                            style={{
-                                display: "grid",
-                                gridTemplateColumns: "1fr 1fr",
-                                gap: "2.5rem",
-                            }}
-                        >
+                    <div className="bundle-deal-card">
+                        <div>
+                            <div className="badge badge-green" style={{ marginBottom: "1rem", display: "inline-block" }}>
+                                단독 공구 세트
+                            </div>
+                            <h3 style={{ fontSize: "2rem", fontWeight: 800, marginBottom: "0.5rem" }}>
+                                차박 & 오토캠핑 입문자용<br />풀패키지 10종 기획전
+                            </h3>
+                            <p style={{ opacity: 0.8, marginBottom: "2rem", fontSize: "1.1rem" }}>
+                                텐트, 매트, 랜턴, 코펠까지 한 번에 끝내는 역대급 할인
+                            </p>
+                            <button className="btn-primary" style={{ background: "var(--gmarket-green)", padding: "1rem 2.5rem" }}>
+                                기획전 바로가기
+                            </button>
+                        </div>
+                        <div style={{ textAlign: "right" }}>
+                            <div style={{ fontSize: "1.2rem", textDecoration: "line-through", opacity: 0.7 }}>
+                                890,000원
+                            </div>
+                            <div style={{ fontSize: "3rem", fontWeight: 800, color: "var(--gmarket-green)", lineHeight: 1 }}>
+                                489,000<span style={{ fontSize: "1.5rem" }}>원</span>
+                            </div>
+                            <div style={{ marginTop: "1rem", color: "#FFD700", fontWeight: 800 }}>
+                                ★ 선착순 100명 사은품 증정
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* G-Shorts (Influencer Videos) */}
+                <section style={{ marginBottom: "5rem" }}>
+                    <SectionHeader
+                        title="모드 인플루언서 G-Shorts"
+                        subtitle="캠핑 고수들의 생생한 꿀팁과 핫템 리뷰를 숏폼으로 만나보세요"
+                    />
+                    <div className="g-shorts-container">
+                        {[
+                            { author: "캠핑하는 멍뭉이", title: "초보자를 위한 텐트 5분 컷 치는 법", img: 41 },
+                            { author: "솔캠마스터", title: "영하 10도에도 끄떡없는 극동계 세팅", img: 42 },
+                            { author: "감성캠퍼 주디", title: "이마트 다이소 꿀템으로 완성하는 감성캠", img: 43 },
+                            { author: "불멍의 신", title: "장작 타는 소리로 힐링 타임 (ASMR)", img: 44 },
+                        ].map((short, i) => (
+                            <div key={i} className="g-short-card">
+                                <img src={`https://picsum.photos/seed/${short.img}/300/500`} alt={short.title} className="g-short-image" />
+                                <div className="g-short-overlay">
+                                    <div className="g-short-author">
+                                        <PlayCircle size={16} /> {short.author}
+                                    </div>
+                                    <div className="g-short-title">{short.title}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Community & Review Board */}
+                <section style={{ marginBottom: "5rem" }}>
+                    <SectionHeader
+                        title="이 모드를 즐기는 사람들"
+                        subtitle="캠핑에 진심인 유저들의 생생한 후기와 정보 공유"
+                    />
+                    <div className="community-section">
+                        <div className="community-list">
+                            {[
+                                { title: "이번 주말 갈만한 노지 캠핑장 추천점요!", author: "캠핑꿈나무", likes: 12, comments: 5, time: "2시간 전" },
+                                { title: "새로 산 텐트 방수 테스트 후기 (사진有)", author: "장비병말기", likes: 89, comments: 24, time: "5시간 전" },
+                                { title: "솔캠 갈때 뭐 해먹으시나요? 메뉴 공유해요", author: "요리왕비룡", likes: 45, comments: 38, time: "어제" },
+                            ].map((review, i) => (
+                                <div key={i} className="review-card">
+                                    <div className="review-content">
+                                        <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>{review.title}</h4>
+                                        <p style={{ color: "#666", fontSize: "0.9rem", marginBottom: "1rem" }}>
+                                            {review.author} · {review.time}
+                                        </p>
+                                        <div style={{ display: "flex", gap: "1rem", color: "#888", fontSize: "0.85rem", fontWeight: 500 }}>
+                                            <span style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                                                <Heart size={14} /> {review.likes}
+                                            </span>
+                                            <span style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                                                <MessageSquare size={14} /> {review.comments}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <img src={`https://picsum.photos/seed/${i+100}/100/100`} className="review-thumbnail" />
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div className="community-best">
+                            <h4 style={{ fontSize: "1.1rem", fontWeight: 800, marginBottom: "1rem", color: "var(--gmarket-blue)" }}>
+                                🔥 주간 베스트 포토 리뷰
+                            </h4>
+                            <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden" }}>
+                                <img src="https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=400" style={{ width: "100%", height: "280px", objectFit: "cover" }} />
+                                <div style={{ position: "absolute", bottom: 0, padding: "1.5rem", background: "linear-gradient(transparent, rgba(0,0,0,0.8))", color: "white", width: "100%" }}>
+                                    <h5 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>극동계 캠핑 무사히 다녀왔습니다!</h5>
+                                    <div style={{ fontSize: "0.85rem", display: "flex", justifyContent: "space-between" }}>
+                                        <span>프로캠퍼</span>
+                                        <span><ThumbsUp size={14}/> 342</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                             <div>
                                 <h4
                                     style={{
@@ -867,75 +948,42 @@ const CampingModePage = ({ onBackClick }) => (
                                     텐트 입구는 풍향의 반대 방향으로 향하게
                                     설치하는 것이 결로 예방에 좋습니다.
                                 </p>
-                            </div>
-                            <div>
-                                <h4
-                                    style={{
-                                        marginBottom: "1rem",
-                                        color: "var(--gmarket-blue)",
-                                    }}
-                                >
-                                    CHECK 02. 매트와 침구
-                                </h4>
-                                <p
-                                    style={{
-                                        fontSize: "0.95rem",
-                                        color: "#555",
-                                    }}
-                                >
-                                    지면의 한기를 차단하는 것이 가장 중요합니다.
-                                    발포 매트 위에 자충 매트를 하나 더 깔아
-                                    '더블 레이어'를 만드는 것을 추천합니다.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+                            </div> {/* Added this closing div for the "CHECK 01" section */}
+                {/* Recommended Products (Like the old list but updated context) */}
                 <section>
                     <SectionHeader
-                        title="모드 필수 장비 리스트"
-                        subtitle="이 모드를 완성하기 위해 지마켓이 제안하는 핵심 아이템"
+                        title="이 모드를 시작하기 위한 추천 템"
+                        subtitle="캠핑 모드 유저들이 방금 함께 구매한 연관 아이템"
                     />
                     <div
                         className="product-grid"
-                        style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
+                        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))" }}
                     >
                         <ProductItem
-                            name="[Full Package] 입문자용 프리미엄 캠핑 세트 (텐트+매트+침난)"
-                            price={489000}
-                            discount="20%"
-                            image="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400"
-                            badge="Package"
-                        />
-                        <ProductItem
-                            name="초고반발 10cm 자충 매트 - 싱글/더블 선택"
-                            price={58000}
-                            discount="10%"
-                            image="https://images.unsplash.com/photo-1515444744559-7be63e1600de?w=400"
-                            badge="Smile"
-                        />
-                        <ProductItem
-                            name="스위스 밀리터리 캠핑 구스 침낭 1500g"
-                            price={129000}
+                            name="감성 캠핑 우드 롤 테이블 XXL (전용가방 증정)"
+                            price={92000}
                             discount="15%"
                             image="https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=400"
-                        />
-                        <ProductItem
-                            name="감성 불멍 전용 구리 화로대 세트"
-                            price={65000}
-                            image="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400"
-                        />
-                        <ProductItem
-                            name="강력 충전식 LED 서치라이트 랜턴"
-                            price={32000}
-                            image="https://images.unsplash.com/photo-1515444744559-7be63e1600de?w=400"
                             badge="Smile"
                         />
                         <ProductItem
-                            name="캠핑용 스테인리스 코펠 12P 올인원"
-                            price={78000}
+                            name="초경량 알루미늄 체어 1+1 기획세트"
+                            price={54900}
+                            discount="10%"
                             image="https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=400"
+                            badge="Best"
+                        />
+                        <ProductItem
+                            name="불멍 화로대 L사이즈 + 오로라 가루 증정"
+                            price={32000}
+                            image="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400"
+                            badge="Smile"
+                        />
+                        <ProductItem
+                            name="어두운 밤을 밝히는 감성 LED 랜턴"
+                            price={45000}
+                            discount="20%"
+                            image="https://images.unsplash.com/photo-1515444744559-7be63e1600de?w=400"
                         />
                     </div>
                 </section>
@@ -1088,7 +1136,7 @@ const CampingModePage = ({ onBackClick }) => (
     </motion.div>
 );
 
-const AIAssistant = () => {
+function AIAssistant() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div
@@ -1116,143 +1164,143 @@ const AIAssistant = () => {
                             boxShadow: "0 30px 60px rgba(0,0,0,0.15)",
                         }}
                     >
-                        <div
-                            style={{
-                                borderBottom: "1px solid #eee",
-                                paddingBottom: "1.2rem",
-                                marginBottom: "1.5rem",
-                                display: "flex",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                            }}
-                        >
                             <div
                                 style={{
+                                    borderBottom: "1px solid #eee",
+                                    paddingBottom: "1.2rem",
+                                    marginBottom: "1.5rem",
                                     display: "flex",
+                                    justifyContent: "space-between",
                                     alignItems: "center",
-                                    gap: "0.8rem",
                                 }}
                             >
                                 <div
                                     style={{
-                                        width: 32,
-                                        height: 32,
-                                        background: "var(--gmarket-blue)",
-                                        borderRadius: "8px",
                                         display: "flex",
                                         alignItems: "center",
-                                        justifyContent: "center",
-                                        color: "#fff",
-                                        fontWeight: 800,
+                                        gap: "0.8rem",
                                     }}
                                 >
-                                    G
-                                </div>
-                                <h3
-                                    style={{
-                                        fontSize: "1.2rem",
-                                        fontWeight: 800,
-                                    }}
-                                >
-                                    Genie{" "}
-                                    <span
+                                    <div
                                         style={{
-                                            fontSize: "0.7rem",
-                                            color: "var(--gmarket-green)",
-                                            background: "#e6f7e9",
-                                            padding: "2px 6px",
-                                            borderRadius: "4px",
-                                            marginLeft: "5px",
+                                            width: 32,
+                                            height: 32,
+                                            background: "var(--gmarket-blue)",
+                                            borderRadius: "8px",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            color: "#fff",
+                                            fontWeight: 800,
                                         }}
                                     >
-                                        BETA
-                                    </span>
-                                </h3>
-                            </div>
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                style={{
-                                    border: "none",
-                                    background: "none",
-                                    cursor: "pointer",
-                                    color: "#999",
-                                    fontSize: "1.5rem",
-                                }}
-                            >
-                                ×
-                            </button>
-                        </div>
-                        <div
-                            style={{
-                                flex: 1,
-                                overflowY: "auto",
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "1.5rem",
-                            }}
-                        >
-                            <div
-                                style={{
-                                    alignSelf: "start",
-                                    background: "#f8f9fa",
-                                    padding: "1rem 1.2rem",
-                                    borderRadius: "18px",
-                                    borderBottomLeftRadius: 0,
-                                    fontSize: "0.95rem",
-                                    boxShadow: "0 2px 5px rgba(0,0,0,0.02)",
-                                }}
-                            >
-                                안녕하세요! 어떤 일상의 순간을 함께
-                                준비해드릴까요?
+                                        G
+                                    </div>
+                                    <h3
+                                        style={{
+                                            fontSize: "1.2rem",
+                                            fontWeight: 800,
+                                        }}
+                                    >
+                                        Genie{" "}
+                                        <span
+                                            style={{
+                                                fontSize: "0.7rem",
+                                                color: "var(--gmarket-green)",
+                                                background: "#e6f7e9",
+                                                padding: "2px 6px",
+                                                borderRadius: "4px",
+                                                marginLeft: "5px",
+                                            }}
+                                        >
+                                            BETA
+                                        </span>
+                                    </h3>
+                                </div>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    style={{
+                                        border: "none",
+                                        background: "none",
+                                        cursor: "pointer",
+                                        color: "#999",
+                                        fontSize: "1.5rem",
+                                    }}
+                                >
+                                    ×
+                                </button>
                             </div>
                             <div
                                 style={{
-                                    alignSelf: "end",
-                                    background: "var(--gmarket-green)",
-                                    color: "#fff",
-                                    padding: "1rem 1.2rem",
-                                    borderRadius: "18px",
-                                    borderBottomRightRadius: 0,
-                                    fontSize: "0.95rem",
-                                    fontWeight: 500,
+                                    flex: 1,
+                                    overflowY: "auto",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "1.5rem",
                                 }}
                             >
-                                캠핑 가서 먹을 맛있는 음식 좀 추천해줘.
+                                <div
+                                    style={{
+                                        alignSelf: "start",
+                                        background: "#f8f9fa",
+                                        padding: "1rem 1.2rem",
+                                        borderRadius: "18px",
+                                        borderBottomLeftRadius: 0,
+                                        fontSize: "0.95rem",
+                                        boxShadow: "0 2px 5px rgba(0,0,0,0.02)",
+                                    }}
+                                >
+                                    안녕하세요! 어떤 일상의 순간을 함께
+                                    준비해드릴까요?
+                                </div>
+                                <div
+                                    style={{
+                                        alignSelf: "end",
+                                        background: "var(--gmarket-green)",
+                                        color: "#fff",
+                                        padding: "1rem 1.2rem",
+                                        borderRadius: "18px",
+                                        borderBottomRightRadius: 0,
+                                        fontSize: "0.95rem",
+                                        fontWeight: 500,
+                                    }}
+                                >
+                                    캠핑 가서 먹을 맛있는 음식 좀 추천해줘.
+                                </div>
+                                <div
+                                    style={{
+                                        alignSelf: "start",
+                                        background: "#f8f9fa",
+                                        padding: "1rem 1.2rem",
+                                        borderRadius: "18px",
+                                        borderBottomLeftRadius: 0,
+                                        fontSize: "0.95rem",
+                                    }}
+                                >
+                                    캠핑의 꽃은 역시 바비큐죠! <br />
+                                    <br />
+                                    지금 지마켓에서 인기 있는 **[스마일프레시]
+                                    항정살 구이 세트**와 **[캠핑전용] 된장찌개
+                                    밀키트**를 추천드려요. 이 아이템들을 장바구니에
+                                    담을까요?
+                                </div>
                             </div>
-                            <div
-                                style={{
-                                    alignSelf: "start",
-                                    background: "#f8f9fa",
-                                    padding: "1rem 1.2rem",
-                                    borderRadius: "18px",
-                                    borderBottomLeftRadius: 0,
-                                    fontSize: "0.95rem",
-                                }}
-                            >
-                                캠핑의 꽃은 역시 바비큐죠! <br />
-                                <br />
-                                지금 지마켓에서 인기 있는 **[스마일프레시]
-                                항정살 구이 세트**와 **[캠핑전용] 된장찌개
-                                밀키트**를 추천드려요. 이 아이템들을 장바구니에
-                                담을까요?
+                            <div style={{ marginTop: "1.5rem" }}>
+                                <input
+                                    type="text"
+                                    placeholder="Genie에게 물어보세요..."
+                                    style={{
+                                        width: "100%",
+                                        padding: "1rem 1.2rem",
+                                        borderRadius: "14px",
+                                        border: "1px solid #eee",
+                                        outline: "none",
+                                        background: "#fdfdfd",
+                                        fontSize: "0.95rem",
+                                    }}
+                                />
                             </div>
-                        </div>
-                        <div style={{ marginTop: "1.5rem" }}>
-                            <input
-                                type="text"
-                                placeholder="Genie에게 물어보세요..."
-                                style={{
-                                    width: "100%",
-                                    padding: "1rem 1.2rem",
-                                    borderRadius: "14px",
-                                    border: "1px solid #eee",
-                                    outline: "none",
-                                    background: "#fdfdfd",
-                                    fontSize: "0.95rem",
-                                }}
-                            />
-                        </div>
-                    </motion.div>
+                        </motion.div>
                 )}
             </AnimatePresence>
             <button
